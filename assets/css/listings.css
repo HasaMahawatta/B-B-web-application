@@ -1,0 +1,87 @@
+/* bredcrumbs ------------------- 
+*/
+
+.a {
+	font-size: 20px;
+	font-family: Arial;
+  color: #444;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -ms-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+a:hover,
+a:focus {
+  color: #9CCC65;
+  text-decoration: none;
+  outline: 0;
+}
+
+
+.breadcrumbs {
+   height: 147px; 
+  padding: 25px 0;
+}
+.breadcrumbs .breadcrumb {
+  margin-bottom: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  float: right;
+  padding: 3px 0;
+}
+.breadcrumbs .breadcrumb > li {
+  font-size: 13px;
+  color: #fff;
+  float: left;
+}
+.breadcrumbs .breadcrumb > li > a {
+  font-size: 1em;
+  color: #fff;
+}
+.breadcrumbs .breadcrumb > li.active {
+  font-size: 1em;
+  color: #fff;
+}
+.breadcrumbs .breadcrumb > li i {
+  padding: 0 10px;
+}
+
+
+/*<-------sameera--end---->*/
+
+
+.gallery .portfolio-sorting {
+    padding: 0;
+    display: table;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+
+.gallery .portfolio-sorting li {
+    list-style: none;
+    float: left;
+}
+
+.gallery .portfolio-sorting li:first-child a {
+    border-left: 1px solid #eee;
+}
+
+.gallery .portfolio-sorting li a {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: 7px 23px;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+.gallery .portfolio-sorting li a:hover, .gallery .portfolio-sorting li a:focus, .gallery .portfolio-sorting li a.active {
+    background-color: #9CCC65;
+    color: #fff;
+}

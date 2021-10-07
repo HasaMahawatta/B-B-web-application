@@ -1,0 +1,412 @@
+
+<?php
+session_start();
+$con=mysqli_connect("localhost","root","","bnb");
+if(isset($_SESSION['renter'])) { $name=$_SESSION['renter'];}
+if(isset($_SESSION['tourist'])) { $name=$_SESSION['tourist'];}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title> Home B&B Accomodations  </title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <script src="assets/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" defer></script>
+ <script src="dist/js/bootstrap-checkbox.min.js" defer></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets\font-awesome-4.7.0\css\font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="assets\font-awesome-4.7.0\css\font-awesome.min.css">
+
+
+</head>
+
+<body style="background-color:#D3D3D3">
+<div class="wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top" style="background: #ffffff;border-bottom: 4px solid #9CCC65;"> <!--  Navigation -->
+         <div class="container-fluid"> 
+            <div class="navbar-header"> 
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false"> 
+                     <span class="sr-only">Toggle navigation</span> 
+                     <span class="icon-bar"></span> 
+                     <span class="icon-bar"></span> 
+                     <span class="icon-bar"></span> 
+                </button> 
+                <a href="#" class="navbar-brand"><img src="assets\img\logo.png" width="40px"></a> 
+            </div> 
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-6" aria-expanded="false" style="height: 1px;"> 
+                <ul class="nav navbar-nav navbar-right"> 
+                    <li><a href="home.php">HOME</a></li> 
+                    <li><a href="listings.php">LISTINGS</a></li> 
+                    <li><a href="About-Us.php">ABOUT US</a></li> 
+                    <li><a href="ContactUs.php">CONTACT US</a></li>
+                    <?php if(isset($_SESSION['renter']) || isset($_SESSION['tourist'])) {  ?>
+                     <li><a href="#">Hi, <?php echo $name;  ?></a></li>
+                     <li><a href="logout.php">Logout</a></li>
+                    <?php } else {?>
+                    <li><a href="Register.php">REGISTER</a></li>
+                    <li><a href="Login.php">LOGIN</a></li>  
+                    <?php } ?>
+                </ul> 
+            </div> 
+         </div> 
+      </nav> <!--  Navigation -->
+      
+      <section class="header-image"> <!-- Section One -->
+         <div class="row">
+             <div class="col-md-6">
+                  <div class="heading">
+                       <h2 class="parallax_t __white">B&amp;B LODGES</h2>
+                       <h2 class="parallax_t __green">available from 10.12.2015</h2>
+                       <P>B&amp;B Lodges is proud to introduce an exciting collection of luxury resorts in Sri Lanka, designed for the discerning traveller.</P>
+                  </div>
+             </div>
+             <div class="col-md-6" style=" padding-right: 50px; margin-top: 80px; margin-bottom:50px">
+                   <div class="heading-form">
+                       <form style=" padding: 20px; "> <!-- Form -->
+                          <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="color:#ffffff">Check in</label>
+                                    <input class="form-control __plannerInput" id="datetimepicker1" type="text" placeholder="10-05-2015">
+                                  </div> 
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="color:#ffffff">Check in</label>
+                                    <input class="form-control __plannerInput" id="datetimepicker1" type="text" placeholder="10-05-2015">
+                                  </div> 
+                             </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                  <label>Room type</label>
+                                  <div class="theme-select">
+                                    <select class="form-control __plannerSelect">
+                                      <option value="">Select a room</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              </div>
+                          </div>
+
+
+                          <div class="row">
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                    <label style="color:#ffffff">ADULTS</label>
+                                           <div class="theme-select">
+                                             <select class="form-control __plannerSelect">
+                                                  <option value="">1</option>
+                                                  <option value="">2</option>
+                                                  <option value="">3</option>
+                                                  <option value="">4</option>
+                                                  <option value="">5</option>
+                                             </select>
+                                            </div>
+
+                                  </div> 
+                             </div>
+
+
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                    <label style="color:#ffffff">KIDS</label>
+                                           <div class="theme-select">
+                                             <select class="form-control __plannerSelect">
+                                                  <option value="">1</option>
+                                                  <option value="">2</option>
+                                                  <option value="">3</option>
+                                                  <option value="">4</option>
+                                                  <option value="">5</option>
+                                             </select>
+                                            </div>
+
+                                  </div> 
+                             </div>
+
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                  <label style="color:#ffffff">ENTER YOUR EMAIL</label>
+                                  <div class="theme-select">
+                                    <select class="form-control __plannerSelect">
+                                      <option value="">Select a room</option>
+                                    </select>
+                                  </div>
+                              </div>
+                             </div>
+
+
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12">
+                          <div class="planner-check-availability" style="float: right;">
+                        <a href="home.php" class="btn btn-default">Check availability</a>
+                      </div>
+                      </div>
+                          </div>
+
+
+
+
+                       </form> <!-- Form -->
+                   </div>
+             </div>
+         </div>
+      </section> <!-- Section One -->
+
+	<section class="best-rooms"> <!-- Section two -->
+        <div class="title-main">
+            <h2 class="h2"><br>Best Offer For Weekend<span class="title-secondary"><br>Look Our Featured Rooms</span></h2>
+        </div>
+
+        <div class="best-rooms-carosel">
+            <div class="row" style="margin: 50px">
+                <div class="col-md-3 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                    <img class="img-responsive" src="assets\img\1.jpg" >
+                   <div class="best-room_t"><a href="best-rooms-detail.html">Grand Super Luxury</a></div>
+                   <div class="best-room_desc">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.
+                </div>
+                <div class="best-room_price">
+                  <span class="price">Rs 15000</span> / One days
+                </div>
+
+                  <center>
+                  <div class="lodge-rating">
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                </center>
+
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                    <img class="img-responsive" src="assets\img\2.jpg" >
+                   <div class="best-room_t"><a href="best-rooms-detail.html">Grand Super Luxury</a></div>
+                   <div class="best-room_desc">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.
+                </div>
+                <div class="best-room_price">
+                  <span class="price">Rs 15000</span> / One days
+                </div>
+
+                  <center>
+                  <div class="lodge-rating">
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                </center>
+
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                    <img class="img-responsive" src="assets\img\3.jpg" >
+                   <div class="best-room_t"><a href="best-rooms-detail.html">Grand Super Luxury</a></div>
+                   <div class="best-room_desc">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.
+                </div>
+                <div class="best-room_price">
+                  <span class="price">Rs 15000</span> / One days
+                </div>
+
+                  <center>
+                  <div class="lodge-rating">
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                </center>
+
+                </div>
+
+            </div>
+            <div class="row" style="margin: 50px">
+                <div class="col-md-3 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                    <img class="img-responsive" src="assets\img\4.jpg" >
+                   <div class="best-room_t"><a href="best-rooms-detail.html">Grand Super Luxury</a></div>
+                   <div class="best-room_desc">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.
+                </div>
+                <div class="best-room_price">
+                  <span class="price">Rs 15000</span> / One days
+                </div>
+
+                  <center>
+                  <div class="lodge-rating">
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                </center>
+
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                    <img class="img-responsive" src="assets\img\5.jpg" >
+                   <div class="best-room_t"><a href="best-rooms-detail.html">Grand Super Luxury</a></div>
+                   <div class="best-room_desc">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.
+                </div>
+                <div class="best-room_price">
+                  <span class="price">Rs 15000</span> / One days
+                </div>
+
+                  <center>
+                  <div class="lodge-rating">
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                </center>
+
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                    <img class="img-responsive" src="assets\img\6.jpg" >
+                   <div class="best-room_t"><a href="best-rooms-detail.html">Grand Super Luxury</a></div>
+                   <div class="best-room_desc">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.
+                </div>
+                <div class="best-room_price">
+                  <span class="price">Rs 15000</span> / One days
+                </div>
+
+                  <center>
+                  <div class="lodge-rating">
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star" aria-hidden="true"></i>
+                   <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                </center>
+
+                </div>
+
+            </div>
+        </div>
+    </section> <!-- Section Two -->
+
+    <section> <!-- Section Three -->
+        <div class="our-services" style="background-color: #ffffff">
+            <div class="title-main">
+            <h2 class="h2" style="padding-top: 10px; margin: 0px">Our Services<br><span class="title-secondary">Great. Safe. Free.</span></h2>
+            </div>
+
+            <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <h3 class="service_title"><i class="fa fa-credit-card"></i> Pay Online</h3>
+            <p>Improve ashamed married expense bed her comfort pursuit mrs. Four time took ye your as fail lady.</p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <h3 class="service_title"><i class="fa fa-clock-o"></i> 24/7</h3>
+            <p>Improve ashamed married expense bed her comfort pursuit mrs. Four time took ye your as fail lady.</p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <h3 class="service_title"><i class="fa fa-leaf"></i> Professional Staff</h3>
+            <p>Improve ashamed married expense bed her comfort pursuit mrs. Four time took ye your as fail lady.</p>
+          </div>
+         
+        </div>
+            
+        </div>
+        
+    </section><!-- Section Three -->
+
+    <section><!-- Section four -->
+        <div class="title-main">
+            <h2 class="h2" style="padding-top: 20px; padding-bottom: 40px; ">User Reviews<br><span class="title-secondary">People say about us</span></h2>
+        </div>
+        <div class="userReviews">
+            <div class="row">
+                <div class="col-md-5 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                   <div class="best-room_t" style="text-align: left; padding-left: 10px"></div>
+                   <div class="best-room_desc"  style="text-align: left; padding-left: 10px; padding-right: 10px; padding-top:20px; font-size: 15px" ><i class="fa fa-credit-card">&nbsp Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.</i>
+                </div>
+                <div class="best-room_price" style="float: right; padding-right: 40px; padding-bottom: 20px">
+                  <span class="name">Maxwel</span>
+                </div>
+                </div>
+                
+                <div class="col-md-5 col-sm-6 col-xs-12" style="margin:0px 50px; padding:0px; background-color:#ffffff">
+                   <div class="best-room_t" style="text-align: left; padding-left: 10px"></div>
+                   <div class="best-room_desc"  style="text-align: left; padding-left: 10px; padding-right: 10px; padding-top:20px; font-size: 15px" ><i class="fa fa-credit-card">&nbsp Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered.</i>
+                </div>
+                <div class="best-room_price" style="float: right; padding-right: 40px; padding-bottom: 20px">
+                  <span class="name">jhony</span>
+                </div>
+                </div>
+                
+            </div>
+        </div>        
+    </section><!-- Section four -->
+
+
+    <section> <!-- Section five -->
+        <div class="our-services" style="background-color: #ffffff; margin-top:40px; border-bottom :1px solid #649918;">
+            <div class="title-main" style="padding-bottom: 20px">
+            <h2 class="h2" style="padding-top: 10px; margin: 0px">Rent Your property<br></h2>
+            </div> 
+
+            <div class="title-sub">
+                <h4>Our company offers best pricing options for home renters. If you are interested 
+                    in add your property to our Lodges network don't be hesitate and contact us<br><br><button class="btn btn-default" >Rent Now</button></h4>
+            </div>
+            
+        </div>
+        
+    </section><!-- Section five -->
+
+
+<div class="footer-bottom"> <!--  footer -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_copy" style="color: #ffffff">Copyright © 2016 B&amp;B Lodges. </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="footer-bottom_links" style="float: right;">
+          <a class="active" href="index.html">Home</a>
+              <a href="gallery.html">Listings</a>
+              <a href="blog.html">Contact Us</a>
+              <a href="wizzard-step1.html">About Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>     <!--  footer -->
+
+
+</div>
+</body>
+
+
+
+
+
+
